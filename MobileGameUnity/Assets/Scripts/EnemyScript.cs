@@ -29,6 +29,11 @@ public class EnemyScript : MonoBehaviour {
             //playerHealth -= 1;
             Destroy(gameObject);
         }
+
+        if (myCollisionInfo.gameObject.name == "groundNeedles")
+        {
+            healthPoints -= needleDamage * needleLevel;
+        }
     }
 
     void Start ()

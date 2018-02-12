@@ -28,6 +28,7 @@ public class TowerDamage : MonoBehaviour {
     public float attackCooldown = 0.0f;
 
     public float needleCooldown = 0.0f;
+    public int needleDamage = 0;
 
     private Vector2 enemyDirection;
 
@@ -257,18 +258,22 @@ public class TowerDamage : MonoBehaviour {
         if (towerType == "needleTower")
         {
             needleCooldown = 3.0f;
+            needleDamage = 5;
 
             if (upgrade1 == true)
             {
                 needleCooldown = 2.5f;
+                needleDamage = 10;
 
                 if (upgrade2 == true)
                 {
                     needleCooldown = 2.0f;
+                    needleDamage = 15;
 
                     if (upgrade3 == true)
                     {
                         needleCooldown = 1.0f;
+                        needleDamage = 20;
                     }
                 }
             }
