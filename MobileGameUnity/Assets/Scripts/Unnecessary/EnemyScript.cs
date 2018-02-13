@@ -17,6 +17,9 @@ public class EnemyScript : MonoBehaviour {
 
     public GameObject finish;
 
+    public int needleDamage = 0;
+    public int needleLevel = 0;
+
     private float targetPriority = 0.0f;
     private Vector2 moveDirection;
     private float distanceToCheckpoint;

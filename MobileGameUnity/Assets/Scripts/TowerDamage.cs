@@ -207,7 +207,7 @@ public class TowerDamage : MonoBehaviour {
         {
             attackRange = 7.5f;
             attackDamage = 5;
-            attackCooldown = 2.0f
+            attackCooldown = 2.0f;
             //-10% to enemy movement speed
 
             if (upgrade1 == true)
