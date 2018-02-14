@@ -52,10 +52,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b043fe58edab347b16cd427cd16c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesLeft: 10
-  enemy: {fileID: 1395472468044736, guid: 2a5c5fbb08d2e4c43ad608b455690445, type: 2}
-  spawner: {fileID: 0}
-  spawnTimer: 1
+  enemy1sLeft: 10
+  enemy2sLeft: 20
+  enemy3sLeft: 15
+  enemy1: {fileID: 1555894022964662, guid: 049343307e825014c858afbf7e380415, type: 2}
+  enemy2: {fileID: 1392577300880818, guid: cafe57646d0d27747b2410193889b4fa, type: 2}
+  enemy3: {fileID: 1395472468044736, guid: 2a5c5fbb08d2e4c43ad608b455690445, type: 2}
+  spawner: {fileID: 1480073991118984}
+  enemy1SpawnTimer: 0
+  enemy2SpawnTimer: 0
+  enemy3SpawnTimer: 0
+  spawnPoint: {fileID: 4096295001797172}
 --- !u!212 &212058920918357508
 SpriteRenderer:
   m_ObjectHideFlags: 1

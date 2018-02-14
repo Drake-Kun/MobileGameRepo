@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerDamageBeta : MonoBehaviour {
 
+    public GameObject target;
+
     public float timer = 0.0f;
 
     List<GameObject> enemiesInRange = new List<GameObject>();
@@ -29,9 +31,11 @@ public class TowerDamageBeta : MonoBehaviour {
 
         timer += Time.deltaTime;
 
+        target = enemiesInRange[0];
+
         if (timer >= 5)
         {
-
+            target.GetComponent<EnemyMovement>().health -= 10;
         }
 
 	}

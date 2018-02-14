@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
+    public int health = 20;
+
     public GameObject checkpoint;
 
     public int checkpointNumber = 0;
