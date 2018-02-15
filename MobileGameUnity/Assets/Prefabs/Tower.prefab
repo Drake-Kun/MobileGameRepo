@@ -9,66 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1555894022964662}
+  m_RootGameObject: {fileID: 1609952937737376}
   m_IsPrefabParent: 1
---- !u!1 &1555894022964662
+--- !u!1 &1609952937737376
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4319539819971356}
-  - component: {fileID: 212219356637525326}
-  - component: {fileID: 114835261987399574}
-  - component: {fileID: 58201709112241766}
-  - component: {fileID: 50998945352962070}
+  - component: {fileID: 4516993307397462}
+  - component: {fileID: 212649193942526356}
+  - component: {fileID: 58377992204710932}
+  - component: {fileID: 114166503597563316}
   m_Layer: 0
-  m_Name: Enemy1
-  m_TagString: Enemy
+  m_Name: Tower
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4319539819971356
+--- !u!4 &4516993307397462
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555894022964662}
+  m_GameObject: {fileID: 1609952937737376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.5, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50998945352962070
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555894022964662}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &58201709112241766
+--- !u!58 &58377992204710932
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555894022964662}
+  m_GameObject: {fileID: 1609952937737376}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -77,28 +56,44 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
---- !u!114 &114835261987399574
+  m_Radius: 2
+--- !u!114 &114166503597563316
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555894022964662}
+  m_GameObject: {fileID: 1609952937737376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7081348eadfeaa4687c70c11f42dd67, type: 3}
+  m_Script: {fileID: 11500000, guid: f90c1ec10ec751f48824c6d80778dbd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 50
-  checkpoint: {fileID: 0}
-  checkpointNumber: 0
-  moveSpeed: 1
---- !u!212 &212219356637525326
+  towerType: bulletTower
+  upgrade1: 0
+  upgrade2: 0
+  upgrade3: 0
+  playerInfoHub: {fileID: 0}
+  goldPerSecond: 0
+  luciferTimer: 0
+  towerTimer: 0
+  victory: 0
+  target: {fileID: 0}
+  money: 0
+  costToUpgrade: 0
+  costToUpgrade2: 0
+  costToUpgrade3: 0
+  attackRange: 0
+  attackDamage: 0
+  attackCooldown: 0
+  needleCooldown: 0
+  needleDamage: 0
+  enemiesInRange: []
+--- !u!212 &212649193942526356
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555894022964662}
+  m_GameObject: {fileID: 1609952937737376}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -127,7 +122,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4eed4b946a4269b40b674fae97aee2a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3d8224e8965a23459788aa6f621aaeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -5,9 +5,9 @@ using UnityEngine;
 public class TowerDamage : MonoBehaviour {
 
     //We will have several types of towers, what is the best way to differentiate them? Several bools? An int or a string?
-    public string towerType = "luciferTower";
-    public bool upgrade1 = false;
-    public bool upgrade2 = false;
+    public string towerType = "bulletTower";
+    public bool upgrade1 = true;
+    public bool upgrade2 = true;
     public bool upgrade3 = false;
 
     public GameObject playerInfoHub;
@@ -15,6 +15,7 @@ public class TowerDamage : MonoBehaviour {
     public int goldPerSecond = 0;
 
     public float luciferTimer = 0.0f;
+    public float towerTimer = 0.0f;
     public bool victory = false;
 
     public GameObject target;
@@ -27,17 +28,56 @@ public class TowerDamage : MonoBehaviour {
     public int attackDamage = 0;
     public float attackCooldown = 0.0f;
 
+    public Transform bulletSpawnPoint;
+    public GameObject bullet;
+
     public float needleCooldown = 0.0f;
     public int needleDamage = 0;
 
     private Vector2 enemyDirection;
 
+    public List<GameObject> enemiesInRange = new List<GameObject>();
 
 
-    // Update is called once per frame
+    void OnTriggerEnter2D(Collider2D myCollisionInfo)
+    {
+        if (myCollisionInfo.gameObject.tag == "Enemy")
+        {
+            enemiesInRange.Add(myCollisionInfo.gameObject);
+            Debug.Log("ENEMY IN RANGE");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D myCollisionInfo)
+    {
+        if (myCollisionInfo.gameObject.tag == "Enemy")
+        {
+            enemiesInRange.Remove(myCollisionInfo.gameObject);
+            Debug.Log("RECALCULATING");
+        }
+    }
+
     void Update()
     {
         TowerTypeCheck();
+        GetComponent<CircleCollider2D>().radius = attackRange;
+
+        towerTimer += Time.deltaTime;
+
+        target = enemiesInRange[0];
+
+        if (towerTimer >= attackCooldown && enemiesInRange.Count > 0)
+        {
+            target.GetComponent<EnemyMovement>().healthPoints -= attackDamage;
+            towerTimer = 0;
+
+            Instantiate(bullet, bulletSpawnPoint);
+        }
+
+        if (luciferTimer >= 30.0f)
+        {
+            victory = true;
+        }
 
         if (towerType == "needleTower")
         {
@@ -51,21 +91,9 @@ public class TowerDamage : MonoBehaviour {
         enemyDirection = new Vector2(enemyPosition.x - transform.position.x, enemyPosition.y - transform.position.y);
         enemyDistance = enemyDirection.magnitude;
         //if there is an enemy in range, attack the one that has the highest target priority
-        if (enemyDistance < attackRange)
-        {
 
-            float timer = 0.0f;
-            timer += Time.deltaTime;
-
-
-
-            timer = 0.0f;
-
-            if (luciferTimer >= 30.0f)
-            {
-                victory = true;
-            }
-        }
+        
+        
     }
 
     public void BuyTower()
@@ -149,25 +177,25 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerType == "artilleryTower")
         {
-            attackRange = 20.0f;
+            attackRange = 3.0f;
             attackDamage = 30;
             attackCooldown = 5.0f;
 
             if (upgrade1 == true)
             {
-                attackRange = 25.0f;
+                attackRange = 3.5f;
                 attackDamage = 45;
                 attackCooldown = 4.5f;
 
                 if (upgrade2 == true)
                 {
-                    attackRange = 30.0f;
+                    attackRange = 4.0f;
                     attackDamage = 60;
                     attackCooldown = 3.5f;
 
                     if (upgrade3 == true)
                     {
-                        attackRange = 40.0f;
+                        attackRange = 5.0f;
                         attackDamage = 100;
                         attackCooldown = 2.5f;
                     }
@@ -177,25 +205,25 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerType == "bulletTower")
         {
-            attackRange = 10.0f;
+            attackRange = 2.0f;
             attackDamage = 10;
             attackCooldown = 1.0f;
 
             if (upgrade1 == true)
             {
-                attackRange = 12.5f;
+                attackRange = 2.25f;
                 attackDamage = 15;
                 attackCooldown = 0.9f;
 
                 if (upgrade2 == true)
                 {
-                    attackRange = 15.0f;
+                    attackRange = 2.5f;
                     attackDamage = 20;
                     attackCooldown = 0.75f;
 
                     if (upgrade3 == true)
                     {
-                        attackRange = 20.0f;
+                        attackRange = 3.0f;
                         attackDamage = 30;
                         attackCooldown = 0.5f;
                     }
@@ -205,28 +233,28 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerType == "weeabooTower")
         {
-            attackRange = 7.5f;
+            attackRange = 2.0f;
             attackDamage = 5;
             attackCooldown = 2.0f;
             //-10% to enemy movement speed
 
             if (upgrade1 == true)
             {
-                attackRange = 10.0f;
+                attackRange = 2.25f;
                 attackDamage = 10;
                 attackCooldown = 1.75f;
                 //-20%to enemy movement speed
 
                 if (upgrade2 == true)
                 {
-                    attackRange = 12.5f;
+                    attackRange = 2.5f;
                     attackDamage = 15;
                     attackCooldown = 1.5f;
                     //-30% to enemy movement speed
 
                     if (upgrade3 == true)
                     {
-                        attackRange = 15.0f;
+                        attackRange = 3.0f;
                         attackDamage = 20;
                         attackCooldown = 1.0f;
                         //-50% to enemy movement speed

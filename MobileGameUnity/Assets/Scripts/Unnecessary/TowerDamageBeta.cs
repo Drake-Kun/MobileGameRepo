@@ -8,14 +8,14 @@ public class TowerDamageBeta : MonoBehaviour {
 
     public float timer = 0.0f;
 
-    List<GameObject> enemiesInRange = new List<GameObject>();
+    public List<GameObject> enemiesInRange = new List<GameObject>();
 
    
     void OnTriggerEnter2D(Collider2D myCollisionInfo)
     {
         if (myCollisionInfo.gameObject.tag == "Enemy")
         {
-            enemiesInRange.Add(gameObject);
+            enemiesInRange.Add(myCollisionInfo.gameObject);
         } 
     }
 
@@ -23,7 +23,7 @@ public class TowerDamageBeta : MonoBehaviour {
     {
         if (myCollisionInfo.gameObject.tag == "Enemy")
         {
-            enemiesInRange.Add(gameObject);
+            enemiesInRange.Remove(myCollisionInfo.gameObject);
         }
     }
 
@@ -33,9 +33,10 @@ public class TowerDamageBeta : MonoBehaviour {
 
         target = enemiesInRange[0];
 
-        if (timer >= 5)
+        if (timer >= 1 && enemiesInRange.Count > 0)
         {
-            target.GetComponent<EnemyMovement>().health -= 10;
+            target.GetComponent<EnemyMovement>().healthPoints -= 10;
+            timer = 0;
         }
 
 	}

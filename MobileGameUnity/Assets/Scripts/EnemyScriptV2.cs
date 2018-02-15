@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyScriptV2 : MonoBehaviour {
 
-    public int health = 20;
+    public int healthPoints = 20;
 
     public GameObject checkpoint;
 
@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour {
     private float distanceToCheckpoint;
     public int moveSpeed = 2;
 
-    private void OnTriggerEnter2D(Collider2D myCollisionInfo)
+    void OnTriggerEnter2D(Collider2D myCollisionInfo)
     {
         if (myCollisionInfo.gameObject.tag == "Finish")
         {
@@ -22,7 +22,8 @@ public class EnemyMovement : MonoBehaviour {
         }
     }
 
-    void Update () {
+    void Update()
+    {
 
         if (distanceToCheckpoint <= 0.1f)
         {
@@ -36,5 +37,10 @@ public class EnemyMovement : MonoBehaviour {
         moveDirection.Normalize();
         GetComponent<Rigidbody2D>().velocity = moveDirection * moveSpeed;
 
+
+        if (healthPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
