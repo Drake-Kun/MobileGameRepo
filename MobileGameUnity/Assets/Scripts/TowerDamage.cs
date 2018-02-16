@@ -68,7 +68,6 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerTimer >= attackCooldown && enemiesInRange.Count > 0)
         {
-            target.GetComponent<EnemyMovement>().healthPoints -= attackDamage;
             towerTimer = 0;
 
             Instantiate(bullet, bulletSpawnPoint);

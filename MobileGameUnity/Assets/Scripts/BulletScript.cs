@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour {
 
     public GameObject target;
+    public int damage;
 
     private Vector2 moveDirection;
     private float distanceToTarget;
@@ -31,6 +32,9 @@ public class BulletScript : MonoBehaviour {
 
         if (distanceToTarget < 0.1)
         {
+            damage = GetComponentInParent<TowerDamage>().attackDamage;
+            target.GetComponent<EnemyScriptV2>().healthPoints -= damage;
+            Debug.Log(target.GetComponent<EnemyScriptV2>().healthPercent);
             Destroy(gameObject);
         }
     }
