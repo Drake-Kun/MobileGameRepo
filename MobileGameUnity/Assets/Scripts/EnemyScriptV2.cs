@@ -56,7 +56,7 @@ public class EnemyScriptV2 : MonoBehaviour {
         moveDirection.Normalize();
         GetComponent<Rigidbody2D>().velocity = moveDirection * moveSpeed;
 
-        
+
     }
 
     void HealthCheck()

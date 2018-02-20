@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour {
 
     public GameObject target;
+    public Transform targetPoint;
     public int damage;
 
     private Vector2 moveDirection;
@@ -29,6 +30,10 @@ public class BulletScript : MonoBehaviour {
         distanceToTarget = moveDirection.magnitude;
         moveDirection.Normalize();
         GetComponent<Rigidbody2D>().velocity = moveDirection * moveSpeed;
+
+        targetPoint = target.transform;
+        transform.right = targetPoint.position - transform.position;
+
 
         if (distanceToTarget < 0.1)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerDamage : MonoBehaviour {
 
     //We will have several types of towers, what is the best way to differentiate them? Several bools? An int or a string?
-    public string towerType = "bulletTower";
+    public string towerType = "null";
     public bool upgrade1 = true;
     public bool upgrade2 = true;
     public bool upgrade3 = false;

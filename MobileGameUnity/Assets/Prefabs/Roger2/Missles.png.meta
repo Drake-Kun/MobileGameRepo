@@ -3,7 +3,9 @@ guid: 5cb2671e8c6c8a44d87371ef7bb7f40d
 timeCreated: 1518818231
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Missles_0
+    21300002: Missles_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,13 +42,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -66,9 +68,85 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Missles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 285
+        width: 285
+        height: 285
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51.5, y: 99.5}
+        - {x: -51.5, y: -67.5}
+        - {x: -41.5, y: -141.5}
+        - {x: -37.5, y: -142.5}
+        - {x: 29.5, y: -142.5}
+        - {x: 48.5, y: -87.5}
+        - {x: 48.5, y: 99.5}
+      physicsShape:
+      - - {x: -51.5, y: 99.5}
+        - {x: -51.5, y: -67.5}
+        - {x: -41.5, y: -141.5}
+        - {x: -37.5, y: -142.5}
+        - {x: 29.5, y: -142.5}
+        - {x: 48.5, y: -87.5}
+        - {x: 48.5, y: 99.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Missles_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 285
+        height: 285
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51.5, y: 99.5}
+        - {x: -51.5, y: -67.5}
+        - {x: -41.5, y: -141.5}
+        - {x: -37.5, y: -142.5}
+        - {x: 29.5, y: -142.5}
+        - {x: 48.5, y: -87.5}
+        - {x: 48.5, y: 99.5}
+      physicsShape:
+      - - {x: -51.5, y: 99.5}
+        - {x: -51.5, y: -67.5}
+        - {x: -41.5, y: -141.5}
+        - {x: -37.5, y: -142.5}
+        - {x: 29.5, y: -142.5}
+        - {x: 48.5, y: -87.5}
+        - {x: 48.5, y: 99.5}
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
