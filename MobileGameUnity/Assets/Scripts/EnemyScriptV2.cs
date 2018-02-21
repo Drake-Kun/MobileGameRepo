@@ -25,7 +25,12 @@ public class EnemyScriptV2 : MonoBehaviour {
 
     private Vector2 moveDirection;
     private float distanceToCheckpoint;
-    public int moveSpeed = 2;
+    public float baseMovementSpeed = 2.0f;
+    public float moveSpeed = 2.0f;
+
+    public bool slowed = false;
+    public float slowExponent = 0.0f;
+    public float slowTimer = 0.0f;
 
     void Start()
     {
@@ -34,6 +39,13 @@ public class EnemyScriptV2 : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D myCollisionInfo)
     {
+        if (myCollisionInfo.gameObject.GetComponent<BulletScript>().iAmYogurt == true)
+        {
+            slowed = true;
+            slowExponent = myCollisionInfo.gameObject.GetComponent<BulletScript>().slowExponent;
+            slowTimer = 2.5f;
+        }
+
         if (myCollisionInfo.gameObject.tag == "Finish")
         {
             Destroy(gameObject);
@@ -43,6 +55,18 @@ public class EnemyScriptV2 : MonoBehaviour {
     void Update()
     {
         HealthCheck();
+
+        if (slowed == true)
+        {
+            moveSpeed = baseMovementSpeed * slowExponent;
+        }
+
+        slowTimer -= Time.deltaTime;
+
+        if (slowTimer <= 0)
+        {
+            slowed = false;
+        }
 
         if (distanceToCheckpoint <= 0.1f)
         {

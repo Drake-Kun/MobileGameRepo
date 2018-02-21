@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212149346557693624}
   - component: {fileID: 50638764809787502}
   - component: {fileID: 114495547337321324}
+  - component: {fileID: 58062878126766148}
   m_Layer: 0
   m_Name: Projectile_yogurtSplat
   m_TagString: Untagged
@@ -62,6 +63,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58062878126766148
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236061054128452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.48
 --- !u!114 &114495547337321324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,9 +90,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targetTransform: {fileID: 0}
+  targetPoint: {fileID: 0}
   damage: 0
   moveSpeed: 5
+  iAmYogurt: 0
 --- !u!212 &212149346557693624
 SpriteRenderer:
   m_ObjectHideFlags: 1
