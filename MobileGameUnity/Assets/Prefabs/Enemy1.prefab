@@ -108,7 +108,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.1
 --- !u!95 &95459040986977710
 Animator:
   serializedVersion: 3
@@ -153,7 +153,11 @@ MonoBehaviour:
   tenPercent: {fileID: 21300002, guid: c21d4c7dda1ced849b4fb4b029523817, type: 3}
   checkpoint: {fileID: 0}
   checkpointNumber: 0
+  baseMovementSpeed: 2
   moveSpeed: 2
+  slowed: 0
+  slowExponent: 0
+  slowTimer: 0
 --- !u!212 &212907408086531254
 SpriteRenderer:
   m_ObjectHideFlags: 1

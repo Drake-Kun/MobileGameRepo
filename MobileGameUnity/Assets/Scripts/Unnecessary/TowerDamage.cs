@@ -236,28 +236,28 @@ public class TowerDamage : MonoBehaviour {
             attackRange = 2.0f;
             attackDamage = 5;
             attackCooldown = 2.0f;
-            movementSlow = 1.1f;
+            movementSlow = 0.9f;
 
             if (upgrade1 == true)
             {
                 attackRange = 2.25f;
                 attackDamage = 10;
                 attackCooldown = 1.75f;
-                movementSlow = 1.25f;
+                movementSlow = 0.8f;
 
                 if (upgrade2 == true)
                 {
                     attackRange = 2.5f;
                     attackDamage = 15;
                     attackCooldown = 1.5f;
-                    movementSlow = 1.5f;
+                    movementSlow = 0.7f;
 
                     if (upgrade3 == true)
                     {
                         attackRange = 3.0f;
                         attackDamage = 20;
                         attackCooldown = 1.0f;
-                        movementSlow = 2.0f;
+                        movementSlow = 0.5f;
                     }
                 }
             }

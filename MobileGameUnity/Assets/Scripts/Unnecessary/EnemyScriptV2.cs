@@ -29,8 +29,8 @@ public class EnemyScriptV2 : MonoBehaviour {
     public float moveSpeed = 2.0f;
 
     public bool slowed = false;
-    public float slowExponent;
-    public float slowTimer;
+    public float slowExponent = 0.0f;
+    public float slowTimer = 0.0f;
 
     void Start()
     {
@@ -39,13 +39,10 @@ public class EnemyScriptV2 : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D myCollisionInfo)
     {
-        if (myCollisionInfo.gameObject.name == "slowArea (copy)")
+        if (myCollisionInfo.gameObject.GetComponent<BulletScript>().iAmYogurt == true)
         {
             slowed = true;
-            if (slowExponent < myCollisionInfo.gameObject.GetComponent<SlowAreaScript>().slowExponent)
-            {
-                slowExponent = myCollisionInfo.gameObject.GetComponent<SlowAreaScript>().slowExponent;
-            }
+            slowExponent = myCollisionInfo.gameObject.GetComponent<BulletScript>().slowExponent;
             slowTimer = 2.5f;
         }
 
@@ -61,7 +58,7 @@ public class EnemyScriptV2 : MonoBehaviour {
 
         if (slowed == true)
         {
-            moveSpeed = baseMovementSpeed / slowExponent;
+            moveSpeed = baseMovementSpeed * slowExponent;
         }
 
         slowTimer -= Time.deltaTime;
@@ -69,7 +66,6 @@ public class EnemyScriptV2 : MonoBehaviour {
         if (slowTimer <= 0)
         {
             slowed = false;
-            slowExponent = 0;
         }
 
         if (distanceToCheckpoint <= 0.1f)

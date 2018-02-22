@@ -15,16 +15,12 @@ public class BulletScript : MonoBehaviour {
     public bool iAmYogurt = false;
     public float slowExponent;
 
-    public GameObject slowArea;
-    public Transform slowAreaSpawnPoint;
-
 
     void Start()
     {
         if (GetComponentInParent<TowerDamage>().towerType == "weeabooTower")
         {
             iAmYogurt = true;
-            slowExponent = GetComponentInParent<TowerDamage>().movementSlow;
         }
         target = GetComponentInParent<TowerDamage>().target;
     }
@@ -35,8 +31,6 @@ public class BulletScript : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-
-        slowAreaSpawnPoint = gameObject.transform;
 
         Vector3 targetPosition = target.transform.position;
         moveDirection = new Vector2(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y);
@@ -52,16 +46,15 @@ public class BulletScript : MonoBehaviour {
         {
             damage = GetComponentInParent<TowerDamage>().attackDamage;
             target.GetComponent<EnemyScriptV2>().healthPoints -= damage;
+
             if (iAmYogurt == true)
             {
-                Instantiate(slowArea, slowAreaSpawnPoint);
+                slowExponent = GetComponentInParent<TowerDamage>().movementSlow;
+                GetComponent<CircleCollider2D>().radius = 2;
             }
-            
 
             Destroy(gameObject);
         }
     }
-
-
 
 }
