@@ -5,15 +5,23 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour {
 
     public GameObject target;
+    public Transform targetPoint;
     public int damage;
 
     private Vector2 moveDirection;
     private float distanceToTarget;
     public int moveSpeed = 2;
 
+    public bool iAmYogurt = false;
+    public float slowExponent;
+
 
     void Start()
     {
+        if (GetComponentInParent<TowerDamage>().towerType == "weeabooTower")
+        {
+            iAmYogurt = true;
+        }
         target = GetComponentInParent<TowerDamage>().target;
     }
 
@@ -30,11 +38,21 @@ public class BulletScript : MonoBehaviour {
         moveDirection.Normalize();
         GetComponent<Rigidbody2D>().velocity = moveDirection * moveSpeed;
 
+        targetPoint = target.transform;
+        transform.right = targetPoint.position - transform.position;
+
+
         if (distanceToTarget < 0.1)
         {
             damage = GetComponentInParent<TowerDamage>().attackDamage;
             target.GetComponent<EnemyScriptV2>().healthPoints -= damage;
-            Debug.Log(target.GetComponent<EnemyScriptV2>().healthPercent);
+
+            if (iAmYogurt == true)
+            {
+                slowExponent = GetComponentInParent<TowerDamage>().movementSlow;
+                GetComponent<CircleCollider2D>().radius = 2;
+            }
+
             Destroy(gameObject);
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerDamage : MonoBehaviour {
 
     //We will have several types of towers, what is the best way to differentiate them? Several bools? An int or a string?
-    public string towerType = "bulletTower";
+    public string towerType = "null";
     public bool upgrade1 = true;
     public bool upgrade2 = true;
     public bool upgrade3 = false;
@@ -27,6 +27,7 @@ public class TowerDamage : MonoBehaviour {
     public float attackRange = 0.0f;
     public int attackDamage = 0;
     public float attackCooldown = 0.0f;
+    public float movementSlow = 0.0f;
 
     public Transform bulletSpawnPoint;
     public GameObject bullet;
@@ -235,28 +236,28 @@ public class TowerDamage : MonoBehaviour {
             attackRange = 2.0f;
             attackDamage = 5;
             attackCooldown = 2.0f;
-            //-10% to enemy movement speed
+            movementSlow = 0.9f;
 
             if (upgrade1 == true)
             {
                 attackRange = 2.25f;
                 attackDamage = 10;
                 attackCooldown = 1.75f;
-                //-20%to enemy movement speed
+                movementSlow = 0.8f;
 
                 if (upgrade2 == true)
                 {
                     attackRange = 2.5f;
                     attackDamage = 15;
                     attackCooldown = 1.5f;
-                    //-30% to enemy movement speed
+                    movementSlow = 0.7f;
 
                     if (upgrade3 == true)
                     {
                         attackRange = 3.0f;
                         attackDamage = 20;
                         attackCooldown = 1.0f;
-                        //-50% to enemy movement speed
+                        movementSlow = 0.5f;
                     }
                 }
             }
