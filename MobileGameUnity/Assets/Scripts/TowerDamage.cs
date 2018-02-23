@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerDamage : MonoBehaviour {
+   
 
     //We will have several types of towers, what is the best way to differentiate them? Several bools? An int or a string?
     public string towerType = "null";
-    public bool upgrade1 = true;
-    public bool upgrade2 = true;
+    public bool upgrade1 = false;
+    public bool upgrade2 = false;
     public bool upgrade3 = false;
 
     public GameObject playerInfoHub;
@@ -19,10 +20,23 @@ public class TowerDamage : MonoBehaviour {
     public bool victory = false;
 
     public GameObject target;
-    public int money = 0;
+
+    public bool weeabooTowerBuy = false;
+    public bool bulletTowerBuy = false;
+    public bool artilleryTowerBuy = false;
+    public bool cashTowerBuy = false;
+
+    public int money;
+
+    public int costCashTower = 100;
+    public int costBulletTower = 150;
+    public int costArtilleryTower = 200;
+    public int costWeeabooTower = 200;
+
     public int costToUpgrade = 0;
     public int costToUpgrade2 = 0;
     public int costToUpgrade3 = 0;
+
 
     public float attackRange = 0.0f;
     public int attackDamage = 0;
@@ -60,6 +74,13 @@ public class TowerDamage : MonoBehaviour {
 
     void Update()
     {
+        if (weeabooTowerBuy == true)
+        {
+            BuyWeeabooTower();
+            weeabooTowerBuy = false;
+        }
+
+        money = GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold;
         TowerTypeCheck();
         GetComponent<CircleCollider2D>().radius = attackRange;
 
@@ -96,9 +117,9 @@ public class TowerDamage : MonoBehaviour {
         
     }
 
-    public void BuyTower()
+    public void ClickTower()
     {
-
+        
     }
 
     public void BuyLuciferTower()
@@ -108,61 +129,73 @@ public class TowerDamage : MonoBehaviour {
 
     public void BuyBulletTower()
     {
-        towerType = "bulletTower";
-        costToUpgrade = 100;
-        costToUpgrade2 = 150;
-        costToUpgrade3 = 200;
+        if (money >= costBulletTower)
+        {
+            towerType = "bulletTower";
+            costToUpgrade = 100;
+            costToUpgrade2 = 150;
+            costToUpgrade3 = 200;
+        }
     }
 
     public void BuyArtilleryTower()
     {
-        towerType = "artilleryTower";
-        costToUpgrade = 150;
-        costToUpgrade2 = 225;
-        costToUpgrade3 = 300;
+        if (money >= costArtilleryTower)
+        {
+            towerType = "artilleryTower";
+            costToUpgrade = 150;
+            costToUpgrade2 = 225;
+            costToUpgrade3 = 300;
+        }
     }
 
     public void BuyWeeabooTower()
     {
-        towerType = "weeabooTower";
-        costToUpgrade = 150;
-        costToUpgrade2 = 200;
-        costToUpgrade3 = 250;
+        if (money >= costWeeabooTower)
+        {
+            towerType = "weeabooTower";
+            costToUpgrade = 150;
+            costToUpgrade2 = 200;
+            costToUpgrade3 = 250;
+        }
     }
 
     public void BuyCashTower()
     {
-        towerType = "cashTower";
-        costToUpgrade = 100;
-        costToUpgrade2 = 175;
-        costToUpgrade3 = 250;
+        if (money >= costCashTower)
+        {
+            towerType = "cashTower";
+            costToUpgrade = 100;
+            costToUpgrade2 = 175;
+            costToUpgrade3 = 250;
+        }
     }
 
     public void UpgradeButton()
     {
-        if (money >= costToUpgrade)
+        if (towerType == "null")
+        {
+            return;
+        }
+        if (money >= costToUpgrade && upgrade1 == false)
         {
             money -= costToUpgrade;
             upgrade1 = true;
         }
-    }
 
-    public void UpgradeButton2()
-    {
-        if (money >= costToUpgrade2)
+        if (money >= costToUpgrade2 && upgrade2 == false && upgrade1 == true)
         {
-           money -= costToUpgrade2;
-           upgrade2 = true;
+            money -= costToUpgrade2;
+            upgrade2 = true;
         }
-    }
-    public void UpgradeButton3()
-    { 
-        if (upgrade2 == true && money >= costToUpgrade3)
+
+        if (money >= costToUpgrade3 && upgrade3 == false && upgrade1 == true && upgrade2 == true)
         {
             money -= costToUpgrade3;
             upgrade3 = true;
         }
     }
+    
 
     public void TowerTypeCheck()
     {

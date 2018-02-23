@@ -79,12 +79,17 @@ MonoBehaviour:
   victory: 0
   target: {fileID: 0}
   money: 0
+  costCashTower: 100
+  costBulletTower: 150
+  costArtilleryTower: 200
+  costWeeabooTower: 200
   costToUpgrade: 0
   costToUpgrade2: 0
   costToUpgrade3: 0
   attackRange: 0
   attackDamage: 0
   attackCooldown: 0
+  movementSlow: 0
   bulletSpawnPoint: {fileID: 4459880222290936}
   bullet: {fileID: 1830391634562896, guid: 3fd6b8bffc5ef7544aab8f1caf4ca973, type: 2}
   needleCooldown: 0
@@ -124,12 +129,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a5dc66cd435075142ac7d704b8de8717, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4db547c168fa0048966a378c1148d70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -51,6 +51,7 @@ public class EnemyScriptV2 : MonoBehaviour {
 
         if (myCollisionInfo.gameObject.tag == "Finish")
         {
+            GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerHealth--;
             Destroy(gameObject);
         }
     }

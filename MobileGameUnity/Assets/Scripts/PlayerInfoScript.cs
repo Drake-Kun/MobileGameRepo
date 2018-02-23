@@ -37,12 +37,4 @@ public class PlayerInfoScript : MonoBehaviour {
         playerHealthText.GetComponent<Text>().text = "Life: " + playerHealth + " / " + playerMaxHealth;
         playerGoldText.GetComponent<Text>().text = "Gold: " + playerGold;
     }
-
-    void OnTriggerEnter2D(Collider2D myCollisionInfo)
-    {
-        if(myCollisionInfo.gameObject.tag == "Enemy")
-        {
-            playerHealth -= 1;
-        }
-    }
 }
