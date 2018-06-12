@@ -4,4 +4,40 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: b96d1b39b7d4f004c96fbc5860730638
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: 781cba3d9a622184cb45e9aab616bd55
+  - enabled: 1
+    path: Assets/Scenes/Level1Easy.unity
+    guid: 2791fa7adb8209548b500bdc921926bf
+  - enabled: 1
+    path: Assets/Scenes/Level1Hard.unity
+    guid: ec559e70236c57b4888237b2cd69a48b
+  - enabled: 1
+    path: Assets/Scenes/Level1Normal.unity
+    guid: 2f64958b336e3f74fafff38b0f50bc88
+  - enabled: 1
+    path: Assets/Scenes/Level2Easy.unity
+    guid: 3fd9cac4a2ca636419748958242be523
+  - enabled: 1
+    path: Assets/Scenes/Level2Hard.unity
+    guid: 329228bd2a4c1b444a7e48c942ee750e
+  - enabled: 1
+    path: Assets/Scenes/Level3Easy.unity
+    guid: a23367678ec1fbd4d8d7a7ab5be2919b
+  - enabled: 1
+    path: Assets/Scenes/Level3Hard.unity
+    guid: ce67cbb3c6afa1c4399565550dd74de3
+  - enabled: 1
+    path: Assets/Scenes/Level3Normal.unity
+    guid: 867abb8e68d818a418130d1ee210127a
+  - enabled: 1
+    path: Assets/Scenes/Level2Normal.unity
+    guid: 7ef45049f97a4a94983ee958fd43b1a1
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 6f467a77fb7eeb546887cdf38cd4bd14

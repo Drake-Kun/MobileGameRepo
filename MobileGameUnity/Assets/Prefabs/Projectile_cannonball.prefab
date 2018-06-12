@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1505309382551484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,9 +74,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targetTransform: {fileID: 0}
+  targetPoint: {fileID: 0}
   damage: 0
   moveSpeed: 10
+  iAmYogurt: 0
+  slowExponent: 0
+  slowArea: {fileID: 0}
+  slowAreaSpawnPoint: {fileID: 0}
 --- !u!212 &212144807315987598
 SpriteRenderer:
   m_ObjectHideFlags: 1

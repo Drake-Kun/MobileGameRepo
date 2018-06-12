@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1324443738656434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,11 +74,11 @@ MonoBehaviour:
   upgrade3: 0
   playerInfoHub: {fileID: 0}
   goldPerSecond: 0
+  goldTimer: 1
   luciferTimer: 0
   towerTimer: 0
   victory: 0
   target: {fileID: 0}
-  money: 0
   costCashTower: 100
   costBulletTower: 150
   costArtilleryTower: 200
@@ -93,9 +93,35 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 4419508802777898, guid: 71ea7a0173bfbe44c9f18dcbe5ad7140,
     type: 2}
   bullet: {fileID: 1236061054128452, guid: ad24c4b471255ea4f807afec9e620a49, type: 2}
+  bulletTypeA: {fileID: 1830391634562896, guid: 3fd6b8bffc5ef7544aab8f1caf4ca973,
+    type: 2}
+  bulletTypeB1: {fileID: 1505309382551484, guid: 413f4b627f2d34a4999e44d1df93c5a5,
+    type: 2}
+  bulletTypeB2: {fileID: 1098784773792838, guid: 723070f54d3f0804d83274b3a4e67dc5,
+    type: 2}
+  bulletTypeB3: {fileID: 1353421911471430, guid: a9e0ac2ad6299854cb8377ff6109123a,
+    type: 2}
+  bulletTypeC: {fileID: 1236061054128452, guid: ad24c4b471255ea4f807afec9e620a49,
+    type: 2}
   needleCooldown: 0
   needleDamage: 0
   enemiesInRange: []
+  cashTower1: {fileID: 21300000, guid: 0cfb0d3d51749414d869613dd3190a1f, type: 3}
+  cashTower2: {fileID: 21300002, guid: 0cfb0d3d51749414d869613dd3190a1f, type: 3}
+  cashTower3: {fileID: 21300004, guid: 0cfb0d3d51749414d869613dd3190a1f, type: 3}
+  cashTower4: {fileID: 21300006, guid: 0cfb0d3d51749414d869613dd3190a1f, type: 3}
+  bulletTower1: {fileID: 21300000, guid: a4db547c168fa0048966a378c1148d70, type: 3}
+  bulletTower2: {fileID: 21300002, guid: a4db547c168fa0048966a378c1148d70, type: 3}
+  bulletTower3: {fileID: 21300004, guid: a4db547c168fa0048966a378c1148d70, type: 3}
+  bulletTower4: {fileID: 21300006, guid: a4db547c168fa0048966a378c1148d70, type: 3}
+  artilleryTower1: {fileID: 21300000, guid: 5f4207a59a238224895ca7a1845812ab, type: 3}
+  artilleryTower2: {fileID: 21300002, guid: 5f4207a59a238224895ca7a1845812ab, type: 3}
+  artilleryTower3: {fileID: 21300004, guid: 5f4207a59a238224895ca7a1845812ab, type: 3}
+  artilleryTower4: {fileID: 21300006, guid: 5f4207a59a238224895ca7a1845812ab, type: 3}
+  weeabooTower1: {fileID: 21300000, guid: 2b0ed0c149ee8a94c9d3f9d889749710, type: 3}
+  weeabooTower2: {fileID: 21300002, guid: 2b0ed0c149ee8a94c9d3f9d889749710, type: 3}
+  weeabooTower3: {fileID: 21300004, guid: 2b0ed0c149ee8a94c9d3f9d889749710, type: 3}
+  weeabooTower4: {fileID: 21300006, guid: 2b0ed0c149ee8a94c9d3f9d889749710, type: 3}
 --- !u!212 &212130738191335644
 SpriteRenderer:
   m_ObjectHideFlags: 1

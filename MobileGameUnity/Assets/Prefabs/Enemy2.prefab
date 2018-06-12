@@ -154,10 +154,11 @@ MonoBehaviour:
   checkpoint: {fileID: 0}
   checkpointNumber: 0
   baseMovementSpeed: 2
-  moveSpeed: 1.5
+  moveSpeed: 0.75
   slowed: 0
   slowExponent: 0
   slowTimer: 0
+  damage: 2
 --- !u!212 &212723460382408956
 SpriteRenderer:
   m_ObjectHideFlags: 1

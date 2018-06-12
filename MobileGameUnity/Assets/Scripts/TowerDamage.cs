@@ -14,19 +14,13 @@ public class TowerDamage : MonoBehaviour {
     public GameObject playerInfoHub;
 
     public int goldPerSecond = 0;
+	public float goldTimer = 1;
 
     public float luciferTimer = 0.0f;
     public float towerTimer = 0.0f;
     public bool victory = false;
 
     public GameObject target;
-
-    public bool weeabooTowerBuy = false;
-    public bool bulletTowerBuy = false;
-    public bool artilleryTowerBuy = false;
-    public bool cashTowerBuy = false;
-
-    public int money;
 
     public int costCashTower = 100;
     public int costBulletTower = 150;
@@ -46,12 +40,39 @@ public class TowerDamage : MonoBehaviour {
     public Transform bulletSpawnPoint;
     public GameObject bullet;
 
+	public GameObject bulletTypeA;
+	public GameObject bulletTypeB1;
+	public GameObject bulletTypeB2;
+	public GameObject bulletTypeB3;
+	public GameObject bulletTypeC;
+
+
     public float needleCooldown = 0.0f;
     public int needleDamage = 0;
 
     private Vector2 enemyDirection;
 
     public List<GameObject> enemiesInRange = new List<GameObject>();
+
+	public Sprite cashTower1;
+	public Sprite cashTower2;
+	public Sprite cashTower3;
+	public Sprite cashTower4;
+
+	public Sprite bulletTower1;
+	public Sprite bulletTower2;
+	public Sprite bulletTower3;
+	public Sprite bulletTower4;
+
+	public Sprite artilleryTower1;
+	public Sprite artilleryTower2;
+	public Sprite artilleryTower3;
+	public Sprite artilleryTower4;
+
+	public Sprite weeabooTower1;
+	public Sprite weeabooTower2;
+	public Sprite weeabooTower3;
+	public Sprite weeabooTower4;
 
 
     void OnTriggerEnter2D(Collider2D myCollisionInfo)
@@ -74,13 +95,12 @@ public class TowerDamage : MonoBehaviour {
 
     void Update()
     {
-        if (weeabooTowerBuy == true)
-        {
-            BuyWeeabooTower();
-            weeabooTowerBuy = false;
-        }
-
-        money = GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold;
+		goldTimer -= Time.deltaTime;
+		if (goldTimer <= 0) 
+		{
+			GameObject.Find ("Main Camera").GetComponent<PlayerInfoScript> ().playerGold += goldPerSecond;
+			goldTimer += 1;
+		}
         TowerTypeCheck();
         GetComponent<CircleCollider2D>().radius = attackRange;
 
@@ -117,11 +137,6 @@ public class TowerDamage : MonoBehaviour {
         
     }
 
-    public void ClickTower()
-    {
-        
-    }
-
     public void BuyLuciferTower()
     {
         towerType = "luciferTower";
@@ -129,8 +144,9 @@ public class TowerDamage : MonoBehaviour {
 
     public void BuyBulletTower()
     {
-        if (money >= costBulletTower)
+		if (GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold >= costBulletTower)
         {
+            GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold -= costBulletTower;
             towerType = "bulletTower";
             costToUpgrade = 100;
             costToUpgrade2 = 150;
@@ -140,8 +156,9 @@ public class TowerDamage : MonoBehaviour {
 
     public void BuyArtilleryTower()
     {
-        if (money >= costArtilleryTower)
+		if (GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold >= costArtilleryTower)
         {
+            GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold -= costArtilleryTower;
             towerType = "artilleryTower";
             costToUpgrade = 150;
             costToUpgrade2 = 225;
@@ -151,8 +168,9 @@ public class TowerDamage : MonoBehaviour {
 
     public void BuyWeeabooTower()
     {
-        if (money >= costWeeabooTower)
+		if (GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold >= costWeeabooTower)
         {
+            GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold -= costWeeabooTower;
             towerType = "weeabooTower";
             costToUpgrade = 150;
             costToUpgrade2 = 200;
@@ -162,8 +180,9 @@ public class TowerDamage : MonoBehaviour {
 
     public void BuyCashTower()
     {
-        if (money >= costCashTower)
+		if (GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold >= costCashTower)
         {
+            GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold -= costCashTower;
             towerType = "cashTower";
             costToUpgrade = 100;
             costToUpgrade2 = 175;
@@ -177,22 +196,25 @@ public class TowerDamage : MonoBehaviour {
         {
             return;
         }
-        if (money >= costToUpgrade && upgrade1 == false)
+		if (GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold >= costToUpgrade && upgrade1 == false)
         {
-            money -= costToUpgrade;
+			GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold -= costToUpgrade;
             upgrade1 = true;
+            return;
         }
 
-        if (money >= costToUpgrade2 && upgrade2 == false && upgrade1 == true)
+		if (GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold >= costToUpgrade2 && upgrade2 == false && upgrade1 == true)
         {
-            money -= costToUpgrade2;
+			GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold -= costToUpgrade2;
             upgrade2 = true;
+            return;
         }
 
-        if (money >= costToUpgrade3 && upgrade3 == false && upgrade1 == true && upgrade2 == true)
+		if (GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold >= costToUpgrade3 && upgrade3 == false && upgrade1 == true && upgrade2 == true)
         {
-            money -= costToUpgrade3;
+			GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerGold -= costToUpgrade3;
             upgrade3 = true;
+            return;
         }
     }
     
@@ -210,24 +232,31 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerType == "artilleryTower")
         {
+			GetComponent<SpriteRenderer>().sprite = artilleryTower1;
+			bullet = bulletTypeB1;
             attackRange = 3.0f;
             attackDamage = 30;
             attackCooldown = 5.0f;
 
             if (upgrade1 == true)
             {
+				GetComponent<SpriteRenderer>().sprite = artilleryTower2;
                 attackRange = 3.5f;
                 attackDamage = 45;
                 attackCooldown = 4.5f;
 
                 if (upgrade2 == true)
                 {
+					GetComponent<SpriteRenderer>().sprite = artilleryTower3;
+					bullet = bulletTypeB2;
                     attackRange = 4.0f;
                     attackDamage = 60;
                     attackCooldown = 3.5f;
 
                     if (upgrade3 == true)
                     {
+						GetComponent<SpriteRenderer>().sprite = artilleryTower4;
+						bullet = bulletTypeB3;
                         attackRange = 5.0f;
                         attackDamage = 100;
                         attackCooldown = 2.5f;
@@ -238,24 +267,29 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerType == "bulletTower")
         {
+			GetComponent<SpriteRenderer>().sprite = bulletTower1;
+			bullet = bulletTypeA;
             attackRange = 2.0f;
             attackDamage = 10;
             attackCooldown = 1.0f;
 
             if (upgrade1 == true)
             {
+				GetComponent<SpriteRenderer>().sprite = bulletTower2;
                 attackRange = 2.25f;
                 attackDamage = 15;
                 attackCooldown = 0.9f;
 
                 if (upgrade2 == true)
                 {
+					GetComponent<SpriteRenderer>().sprite = bulletTower3;
                     attackRange = 2.5f;
                     attackDamage = 20;
                     attackCooldown = 0.75f;
 
                     if (upgrade3 == true)
                     {
+						GetComponent<SpriteRenderer>().sprite = bulletTower4;
                         attackRange = 3.0f;
                         attackDamage = 30;
                         attackCooldown = 0.5f;
@@ -266,6 +300,8 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerType == "weeabooTower")
         {
+			GetComponent<SpriteRenderer>().sprite = weeabooTower1;
+			bullet = bulletTypeC;
             attackRange = 2.0f;
             attackDamage = 5;
             attackCooldown = 2.0f;
@@ -273,6 +309,7 @@ public class TowerDamage : MonoBehaviour {
 
             if (upgrade1 == true)
             {
+				GetComponent<SpriteRenderer>().sprite = weeabooTower2;
                 attackRange = 2.25f;
                 attackDamage = 10;
                 attackCooldown = 1.75f;
@@ -280,6 +317,7 @@ public class TowerDamage : MonoBehaviour {
 
                 if (upgrade2 == true)
                 {
+					GetComponent<SpriteRenderer>().sprite = weeabooTower3;
                     attackRange = 2.5f;
                     attackDamage = 15;
                     attackCooldown = 1.5f;
@@ -287,6 +325,7 @@ public class TowerDamage : MonoBehaviour {
 
                     if (upgrade3 == true)
                     {
+						GetComponent<SpriteRenderer>().sprite = weeabooTower4;
                         attackRange = 3.0f;
                         attackDamage = 20;
                         attackCooldown = 1.0f;
@@ -298,46 +337,26 @@ public class TowerDamage : MonoBehaviour {
 
         if (towerType == "cashTower")
         {
+			GetComponent<SpriteRenderer>().sprite = cashTower1;
             goldPerSecond = 5;
 
             if (upgrade1 == true)
             {
+				GetComponent<SpriteRenderer>().sprite = cashTower2;
                 goldPerSecond = 10;
 
                 if (upgrade2 == true)
                 {
+					GetComponent<SpriteRenderer>().sprite = cashTower3;
                     goldPerSecond = 15;
 
                     if (upgrade3 == true)
                     {
+						GetComponent<SpriteRenderer>().sprite = cashTower4;
                         goldPerSecond = 20;
                     }
                 }
             }
         }
-
-        if (towerType == "needleTower")
-        {
-            needleCooldown = 3.0f;
-            needleDamage = 5;
-
-            if (upgrade1 == true)
-            {
-                needleCooldown = 2.5f;
-                needleDamage = 10;
-
-                if (upgrade2 == true)
-                {
-                    needleCooldown = 2.0f;
-                    needleDamage = 15;
-
-                    if (upgrade3 == true)
-                    {
-                        needleCooldown = 1.0f;
-                        needleDamage = 20;
-                    }
-                }
-            }
-        } 
     }
 }

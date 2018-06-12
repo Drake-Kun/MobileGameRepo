@@ -74,15 +74,11 @@ MonoBehaviour:
   upgrade3: 0
   playerInfoHub: {fileID: 0}
   goldPerSecond: 0
+  goldTimer: 1
   luciferTimer: 0
   towerTimer: 0
   victory: 0
   target: {fileID: 0}
-  weeabooTowerBuy: 0
-  bulletTowerBuy: 0
-  artilleryTowerBuy: 0
-  cashTowerBuy: 0
-  money: 0
   costCashTower: 100
   costBulletTower: 150
   costArtilleryTower: 200
@@ -96,9 +92,30 @@ MonoBehaviour:
   movementSlow: 0
   bulletSpawnPoint: {fileID: 4419508802777898}
   bullet: {fileID: 1236061054128452, guid: ad24c4b471255ea4f807afec9e620a49, type: 2}
+  bulletTypeA: {fileID: 0}
+  bulletTypeB1: {fileID: 0}
+  bulletTypeB2: {fileID: 0}
+  bulletTypeB3: {fileID: 0}
+  bulletTypeC: {fileID: 0}
   needleCooldown: 0
   needleDamage: 0
   enemiesInRange: []
+  cashTower1: {fileID: 0}
+  cashTower2: {fileID: 0}
+  cashTower3: {fileID: 0}
+  cashTower4: {fileID: 0}
+  bulletTower1: {fileID: 0}
+  bulletTower2: {fileID: 0}
+  bulletTower3: {fileID: 0}
+  bulletTower4: {fileID: 0}
+  artilleryTower1: {fileID: 0}
+  artilleryTower2: {fileID: 0}
+  artilleryTower3: {fileID: 0}
+  artilleryTower4: {fileID: 0}
+  weeabooTower1: {fileID: 0}
+  weeabooTower2: {fileID: 0}
+  weeabooTower3: {fileID: 0}
+  weeabooTower4: {fileID: 0}
 --- !u!212 &212871133148520416
 SpriteRenderer:
   m_ObjectHideFlags: 1

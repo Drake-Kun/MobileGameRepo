@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerInfoScript : MonoBehaviour {
 
@@ -11,10 +12,15 @@ public class PlayerInfoScript : MonoBehaviour {
     public int playerMaxHealth;
     public int playerHealth;
 
+	public int waveNumber;
+	public int waveNumberTotal;
+
     public GameObject playerCanvas;
 
     public GameObject playerHealthText;
     public GameObject playerGoldText;
+
+	public GameObject waveNumberText;
 
 
 	// Use this for initialization
@@ -36,5 +42,11 @@ public class PlayerInfoScript : MonoBehaviour {
 
         playerHealthText.GetComponent<Text>().text = "Life: " + playerHealth + " / " + playerMaxHealth;
         playerGoldText.GetComponent<Text>().text = "Gold: " + playerGold;
+		//waveNumberText.GetComponent<Text>().text = waveNumber + " / " + waveNumberTotal;
+        Debug.Log(playerHealth);
+        if (playerHealth <= 0)
+        {
+            SceneManager.LoadScene("Defeat");
+        }
     }
 }

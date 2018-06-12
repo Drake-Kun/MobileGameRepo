@@ -8,6 +8,8 @@ public class BulletScript : MonoBehaviour {
     public Transform targetPoint;
     public int damage;
 
+    public bool slowAreaActive;
+
     private Vector2 moveDirection;
     private float distanceToTarget;
     public int moveSpeed = 2;
@@ -54,7 +56,8 @@ public class BulletScript : MonoBehaviour {
             target.GetComponent<EnemyScriptV2>().healthPoints -= damage;
             if (iAmYogurt == true)
             {
-                Instantiate(slowArea, slowAreaSpawnPoint);
+                GetComponent<CircleCollider2D>().radius = 1;
+                slowAreaActive = true;
             }
             
 

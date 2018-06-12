@@ -32,6 +32,8 @@ public class EnemyScriptV2 : MonoBehaviour {
     public float slowExponent;
     public float slowTimer;
 
+    public int damage;
+
     void Start()
     {
         healthPoints = healthPointsMax;
@@ -51,7 +53,7 @@ public class EnemyScriptV2 : MonoBehaviour {
 
         if (myCollisionInfo.gameObject.tag == "Finish")
         {
-            GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerHealth--;
+            GameObject.Find("Main Camera").GetComponent<PlayerInfoScript>().playerHealth -= damage;
             Destroy(gameObject);
         }
     }
@@ -145,6 +147,7 @@ public class EnemyScriptV2 : MonoBehaviour {
 
         if (healthPoints <= 0)
         {
+            GameObject.Find("Spawner").GetComponent<SpawnerScriptBeta>().enemiesAliveTotal--;
             Destroy(gameObject);
         }
     }

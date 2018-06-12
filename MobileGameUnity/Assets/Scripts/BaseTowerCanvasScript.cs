@@ -6,6 +6,45 @@ public class BaseTowerCanvasScript : MonoBehaviour {
 
     public GameObject towerSelected;
 
+    public Transform selectIndicatorPosition;
+    public GameObject selectIndicator;
+
+	void Update()
+	{
+		if (towerSelected.GetComponent<TowerDamage> ().towerType == "null") 
+		{
+			GetComponent<Canvas>().enabled = true;
+		}
+
+		if (towerSelected.GetComponent<TowerDamage> ().towerType != "null") 
+		{
+			GetComponent<Canvas>().enabled = false;
+		}
+
+        selectIndicatorPosition = towerSelected.transform;
+        GameObject.Find("SelectIndicator").transform.position = selectIndicatorPosition.position;
+	}
+
+	public void UpgradeTower()
+	{
+		towerSelected.GetComponent<TowerDamage>().UpgradeButton();
+	}
+
+	public void BuyCashTower()
+	{
+		towerSelected.GetComponent<TowerDamage>().BuyCashTower();
+	}
+
+	public void BuyBulletTower()
+	{
+		towerSelected.GetComponent<TowerDamage>().BuyBulletTower();
+	}
+
+	public void BuyArtilleryTower()
+	{
+		towerSelected.GetComponent<TowerDamage>().BuyArtilleryTower();
+	}
+
     public void BuyWeeabooTower()
     {
         towerSelected.GetComponent<TowerDamage>().BuyWeeabooTower();
